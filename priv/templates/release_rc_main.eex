@@ -120,6 +120,11 @@ case $COMMAND_NAME in
         configure_release
         . "$COMMAND_DIR/console.sh" "$COMMAND_NAME" "$@"
         ;;
+    ping|remote_console|stop)
+        SKIP_CONFIG_PROVIDERS=true
+        configure_release
+        . "$COMMAND_PATH" "$@"
+        ;;
     *)
         # If the command exists in libexec, execute
         # Otherwise check to see if it's the name of a custom command
